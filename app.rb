@@ -1,7 +1,7 @@
 require 'sinatra'
 
-get '/'
-  File.read('index.html')
+get '/' do
+  erb :index
 end
 
 get 'favorites' do
@@ -13,6 +13,7 @@ get '/favorites' do
   file = JSON.parse(File.read('data.json'))
   unless params[:name] && params[:oid]
     return 'Invalid Request'
+  end
   movie = { name: params[:name], oid: params[:oid] }
   file << movie
   File.write('data.json',JSON.pretty_generate(file))
