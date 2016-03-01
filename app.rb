@@ -1,7 +1,7 @@
 require 'sinatra'
 
 get '/' do
-  erb :index
+  erb :index, layout: true
 end
 
 get 'favorites' do
