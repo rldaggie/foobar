@@ -1,15 +1,18 @@
 require 'sinatra'
+require 'sinatra/json'
+require 'json'
 
 get '/' do
   erb :index, layout: true
 end
 
-get 'favorites' do
-  response.header['Content-Type'] = 'application/json'
-  File.read('data.json')
+get '/favorites' do
+  data = File.read('data.json')
+  data = data.to_s.length > 2 ? JSON.parse(data) : []
+  json data
 end
 
-get '/favorites' do
+post '/favorites' do
   file = JSON.parse(File.read('data.json'))
   unless params[:name] && params[:oid]
     return 'Invalid Request'
