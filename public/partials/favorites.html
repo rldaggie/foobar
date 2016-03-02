@@ -1,1 +1,23 @@
-<h1>Favorites</h1>
+<div class="jumbotron">
+  <h1>Favorites</h1>
+
+  <p class="lead">Below are your favorites.</p>
+</div>
+
+<div class="panel panel-default" ng-repeat="favorite in favorites">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{favorite.Title}}</h3>
+  </div>
+
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-lg-6">
+        <p>{{favorite.Plot}}</p>
+      </div>
+
+      <div class="col-lg-6">
+        <img ng-src="{{favorite.Poster}}">
+      </div>
+    </div>
+  </div>
+</div>

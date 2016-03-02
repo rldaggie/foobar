@@ -34,8 +34,39 @@ app.controller('SearchController', ['$http', '$scope', function($http, $scope) {
       }
     )
   }
+
+  $scope.addToFavorites = function(result) {
+    console.log('addToFavorites');
+    console.log(result);
+    $http(
+      {
+        url: '/favorites',
+        params: {
+          "Title": result.Title,
+          "Plot": result.Plot,
+          "Poster": result.Poster
+        },
+        method: 'POST'
+      }
+    ).then(function (data) {
+      console.log(data);
+    })
+    // $http.post('/favorites', result).success(function(data) {
+    //   console.log(data);
+    // });
+  }
 }]);
 
 app.controller('FavoritesController', ['$http', '$scope', function($http, $scope) {
+  $scope.favorites = []
+
+  $http({
+    url: '/favorites',
+    method: 'GET'
+  }).then(
+    function(response) {
+      $scope.favorites = response.data;
+    }
+  )
 
 }]);
