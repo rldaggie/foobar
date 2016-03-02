@@ -12,7 +12,21 @@
   </head>
   <body>
     <div class="container">
-      <%= yield %>
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <div class="page-header">
+            <ul class="nav nav-pills pull-right">
+              <li><a href="/">Home</a></li>
+              <li><a href="/favorites">Favorites</a></li>
+            </ul>
+            <h1>Movie Search</h1>
+          </div>
+
+          <%= yield %>
+
+        </div>
+      </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
   </body>
 </html>
